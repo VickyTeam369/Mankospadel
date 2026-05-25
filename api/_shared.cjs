@@ -149,14 +149,10 @@ function readSiteData() {
 
 async function readBlobSiteData() {
   if (!process.env.BLOB_READ_WRITE_TOKEN) return null;
-  const { list } = await import('@vercel/blob');
-  const result = await list({ prefix: blobPath, limit: 1 });
-  const blob = result.blobs?.find((item) => item.pathname === blobPath);
-  if (!blob?.url) return null;
-
-  const response = await fetch(blob.url);
-  if (!response.ok) return null;
-  const text = await response.text();
+  const { get } = await import('@vercel/blob');
+  const result = await get(blobPath, { access: 'private' });
+  if (!result || result.statusCode !== 200 || !result.stream) return null;
+  const text = await new Response(result.stream).text();
   return JSON.parse(text);
 }
 
@@ -176,7 +172,7 @@ async function writeSiteData(data) {
   if (process.env.BLOB_READ_WRITE_TOKEN) {
     const { put } = await import('@vercel/blob');
     await put(blobPath, content, {
-      access: 'public',
+      access: 'private',
       allowOverwrite: true,
       contentType: 'application/json',
       cacheControlMaxAge: 60
