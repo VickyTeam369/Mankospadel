@@ -4,7 +4,7 @@ const path = require('path');
 
 const root = __dirname;
 const dataPath = path.join(root, 'src', 'data', 'site-data.json');
-const adminPassword = process.env.ADMIN_PASSWORD || 'Vicky369';
+const adminPassword = process.env.ADMIN_PASSWORD;
 const sessions = new Set();
 const port = Number(process.env.PORT || 4173);
 const host = process.env.HOST || '0.0.0.0';
@@ -106,6 +106,11 @@ function cleanCourtNumbers(value) {
 async function handleApi(request, response, url) {
   if (request.method === 'POST' && url.pathname === '/api/login') {
     const body = JSON.parse((await readBody(request)) || '{}');
+    if (!adminPassword) {
+      sendJson(response, 503, { error: 'Falta configurar ADMIN_PASSWORD en el servidor.' });
+      return true;
+    }
+
     if (body.password !== adminPassword) {
       sendJson(response, 401, { error: 'Clave incorrecta' });
       return true;

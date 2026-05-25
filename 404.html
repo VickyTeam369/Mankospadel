@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volviendo al inicio | Torneo de Mankos</title>
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background: #080d13;
+        color: #f7fbff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      a {
+        color: #13b5d0;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Redirigiendo al inicio</h1>
+      <p>Si no avanza solo, <a href="./index.html">volver al inicio</a>.</p>
+    </main>
+    <script>
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      const projectBase = window.location.hostname.endsWith('github.io') && parts.length > 1 ? `/${parts[0]}/` : '/';
+      window.location.replace(projectBase);
+    </script>
+  </body>
+</html>
