@@ -653,7 +653,7 @@ function agendaModal() {
   const confirmedCount = day.confirmed.length;
   const eventName = day.type === 'tournament' ? 'Torneo Mankos' : 'Fecha privada';
   const venueAddress = venueAddressFor(day.venue);
-  const canViewPairs = canViewPairsFor(day);
+  const canViewPairs = day.play && day.pairs.length > 0;
   const pairButtonLabel = day.pairs.length ? 'Ver Parejas' : 'Parejas sin cargar';
   const podium = finalPodiumFor(day);
 
@@ -1012,10 +1012,7 @@ function pairMatchesFor(day, selectedPair) {
 }
 
 function canViewPairsFor(day) {
-  if (!day.play || !day.time || !day.pairs.length) return false;
-  const startsAt = new Date(`${day.key}T${day.time}:00`);
-  if (Number.isNaN(startsAt.getTime())) return false;
-  return Date.now() >= startsAt.getTime() - 30 * 60 * 1000;
+  return Boolean(day?.play && day.pairs?.length);
 }
 
 function canViewResultsFor(day) {
