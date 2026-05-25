@@ -5,6 +5,6 @@
   "scripts": {
     "dev": "node server.cjs",
     "start": "node server.cjs",
-    "check": "node --check src/app.js && node --check src/admin.js && node --check server.cjs"
+    "check": "node --check src/app.js && node --check src/admin.js && node --check server.cjs && node --check api/_shared.cjs && node --check api/login.js && node --check api/site-data.js"
   }
 }
