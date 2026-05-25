@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" role="img" aria-label="SGI">
+  <rect width="180" height="64" fill="none"/>
+  <path d="M90 8 142 32 90 56 38 32Z" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <path d="M90 14 130 32 90 50 50 32Z" fill="none" stroke="#7f8a93" stroke-width="2"/>
+  <text x="68" y="38" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="900">SGI</text>
+</svg>

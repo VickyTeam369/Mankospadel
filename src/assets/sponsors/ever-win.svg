@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" role="img" aria-label="Ever Win">
+  <rect width="180" height="64" fill="none"/>
+  <text x="20" y="35" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="900">EVER</text>
+  <text x="22" y="52" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="900">WIN</text>
+  <circle cx="130" cy="37" r="13" fill="#a7e92f"/>
+  <path d="M121 37c8-5 16-5 25 1" stroke="#ffffff" stroke-width="4" fill="none"/>
+</svg>

@@ -1,0 +1,290 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #101214;
+  background: #eef1f4;
+  --accent: #08a8c8;
+  --accent-dark: #04758e;
+  --line: #dce4ec;
+  --muted: #667085;
+  --panel: #ffffff;
+  --shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #eef1f4;
+  overflow-x: hidden;
+}
+
+main {
+  width: min(100%, 430px);
+  min-height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #eef1f4;
+}
+
+.sponsor-hero {
+  min-height: 430px;
+  display: grid;
+  align-content: start;
+  gap: 52px;
+  padding: 14px 10px 48px;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(7, 10, 13, 0.78), rgba(7, 10, 13, 0.94)),
+    url("./assets/padel-hero-bg.png") right top / cover no-repeat;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+  background: rgba(7, 14, 25, 0.58);
+  backdrop-filter: blur(18px);
+}
+
+.top-nav strong {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.88rem;
+  font-weight: 950;
+  text-align: right;
+}
+
+.nav-brand {
+  width: 108px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.nav-brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.back-button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 0 12px;
+  color: #101214;
+  background: var(--accent);
+  font-size: 0.86rem;
+  font-weight: 950;
+  text-decoration: none;
+}
+
+.back-button span {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.hero-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.hero-copy p,
+.section-title p,
+.sponsor-card span {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  max-width: 390px;
+  font-size: clamp(2.85rem, 13vw, 4.15rem);
+  line-height: 0.92;
+}
+
+.hero-copy > strong {
+  max-width: 360px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.support-summary,
+.sponsor-section {
+  width: calc(100% - 14px);
+  margin-inline: auto;
+}
+
+.support-summary {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: -34px;
+}
+
+.support-summary article,
+.sponsor-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.support-summary article {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+}
+
+.support-summary span {
+  color: var(--accent-dark);
+  font-size: 1.7rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.support-summary strong {
+  font-size: 1.05rem;
+}
+
+.support-summary p,
+.sponsor-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.sponsor-section {
+  padding: 24px 0 44px;
+}
+
+.section-title {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.sponsor-card {
+  min-height: 132px;
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 13px;
+  align-items: start;
+  padding: 14px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+a.sponsor-card:hover,
+a.sponsor-card:focus-visible {
+  border-color: rgba(8, 168, 200, 0.55);
+  box-shadow: 0 18px 44px rgba(8, 168, 200, 0.16);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.sponsor-card--featured {
+  border-color: rgba(8, 168, 200, 0.58);
+  background: linear-gradient(135deg, #ffffff 0%, #ecfbff 100%);
+}
+
+.profile-logo,
+.logo {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #fff;
+  background: #fff;
+  border: 3px solid #101214;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+  font-weight: 950;
+  overflow: hidden;
+}
+
+.profile-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-logo img[src$=".svg"] {
+  padding: 6px;
+  object-fit: contain;
+}
+
+.sponsor-card div:last-child {
+  display: grid;
+  gap: 5px;
+}
+
+.sponsor-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.sponsor-card strong {
+  width: max-content;
+  max-width: 100%;
+  margin-top: 3px;
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: #101214;
+  background: #e7f9fd;
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+@media (min-width: 760px) {
+  main {
+    width: min(100%, 980px);
+  }
+
+  .sponsor-hero {
+    min-height: 470px;
+    padding: 18px 24px 56px;
+  }
+
+  .support-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sponsor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
