@@ -26,16 +26,28 @@ function setStatus(message, isError = false) {
 }
 
 async function api(path, options = {}) {
-  const response = await fetch(path, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...(options.headers || {})
+  let response;
+  try {
+    response = await fetch(path, {
+      ...options,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...(options.headers || {})
+      }
+    });
+  } catch {
+    throw new Error('No se pudo conectar con el servidor del admin.');
+  }
+
+  const contentType = response.headers.get('content-type') || '';
+  const payload = contentType.includes('application/json') ? await response.json().catch(() => ({})) : {};
+  if (!response.ok) {
+    if (response.status === 404 && path.startsWith('/api/')) {
+      throw new Error('La API del admin no esta publicada en Vercel. Subi la carpeta api y redeploya.');
     }
-  });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(payload.error || 'No se pudo completar la accion');
+    throw new Error(payload.error || `No se pudo completar la accion (${response.status}).`);
+  }
   return payload;
 }
 

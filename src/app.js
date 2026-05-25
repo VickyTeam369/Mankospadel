@@ -342,7 +342,13 @@ function render() {
       <header class="hero">
         <nav class="topbar" aria-label="Principal">
           <div class="brand-row">
-            <div class="brand"><span class="brand-mark"><img src="./src/assets/mankos-icon.png" alt="Torneo de Mankos"></span><span>Torneo de Mankos</span></div>
+            <div class="brand">
+              <span class="brand-mark">
+                <img src="./src/assets/mankos-icon.png" alt="Torneo de Mankos">
+                <a class="admin-secret-link" href="./admin.html" aria-label="Ingresar al panel privado"></a>
+              </span>
+              <span>Torneo de Mankos</span>
+            </div>
             <a class="live-link ${liveClass}" href="${liveConfig.youtubeUrl}" target="_blank" rel="noopener" aria-label="Abrir transmision en vivo por YouTube">
               ${icon('live')}
               <span>LIVE</span>
