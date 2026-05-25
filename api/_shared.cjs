@@ -154,11 +154,7 @@ async function readBlobSiteData() {
   const blob = result.blobs?.find((item) => item.pathname === blobPath);
   if (!blob?.url) return null;
 
-  const response = await fetch(blob.url, {
-    headers: {
-      Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`
-    }
-  });
+  const response = await fetch(blob.url);
   if (!response.ok) return null;
   const text = await response.text();
   return JSON.parse(text);
@@ -180,7 +176,7 @@ async function writeSiteData(data) {
   if (process.env.BLOB_READ_WRITE_TOKEN) {
     const { put } = await import('@vercel/blob');
     await put(blobPath, content, {
-      access: 'private',
+      access: 'public',
       allowOverwrite: true,
       contentType: 'application/json',
       cacheControlMaxAge: 60
