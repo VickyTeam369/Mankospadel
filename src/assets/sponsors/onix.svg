@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" role="img" aria-label="Onix">
+  <rect width="180" height="64" fill="none"/>
+  <circle cx="62" cy="25" r="17" fill="#ffffff"/>
+  <path d="M49 18c15-8 28-3 33 8-12-6-23-5-33-8Z" fill="#dfe8ef"/>
+  <text x="38" y="53" fill="#ffffff" font-family="Arial, sans-serif" font-size="20" font-weight="900">ONIX</text>
+</svg>

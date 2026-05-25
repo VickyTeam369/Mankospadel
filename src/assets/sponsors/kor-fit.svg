@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" role="img" aria-label="Kor Fit">
+  <rect width="180" height="64" fill="none"/>
+  <rect x="34" y="11" width="92" height="42" fill="none" stroke="#ffffff" stroke-width="4"/>
+  <text x="48" y="35" fill="#ffffff" font-family="Arial, sans-serif" font-size="22" font-weight="900">KOR</text>
+  <text x="85" y="45" fill="#ffc247" font-family="Arial, sans-serif" font-size="19" font-weight="900" font-style="italic">FIT</text>
+</svg>

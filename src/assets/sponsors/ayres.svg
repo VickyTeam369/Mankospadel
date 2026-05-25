@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 64" role="img" aria-label="Ayres">
+  <rect width="180" height="64" fill="none"/>
+  <circle cx="30" cy="32" r="20" fill="#dfe8ef"/>
+  <circle cx="30" cy="32" r="12" fill="#7f98a8"/>
+  <path d="M20 32c8-15 22-15 32 0-10-6-22-6-32 0Z" fill="#eef5f8"/>
+  <text x="58" y="35" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="900">Ayres</text>
+  <text x="60" y="49" fill="#cbd5df" font-family="Arial, sans-serif" font-size="7" font-weight="700">OPERACIONES INMOBILIARIAS</text>
+</svg>

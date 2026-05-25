@@ -1,0 +1,359 @@
+{
+  "settings": {
+    "exhibitionTitle": "Exhibicion Mankos Padel",
+    "exhibitionDescription": "Jugamos todas las semanas los lunes y miercoles.",
+    "playdayVenue": "@puntosport"
+  },
+  "players": [
+    {
+      "name": "Jose L.",
+      "hand": "Drive",
+      "img": ""
+    },
+    {
+      "name": "Vicky D' P.",
+      "hand": "Reves",
+      "img": ""
+    },
+    {
+      "name": "Lukia F.",
+      "hand": "Drive",
+      "img": ""
+    },
+    {
+      "name": "Maxi",
+      "hand": "Reves",
+      "img": ""
+    },
+    {
+      "name": "Pauli",
+      "hand": "Reves",
+      "img": ""
+    },
+    {
+      "name": "Jessi N.",
+      "hand": "Drive",
+      "img": ""
+    },
+    {
+      "name": "Elias",
+      "hand": "Drive",
+      "img": ""
+    },
+    {
+      "name": "Nico D,.",
+      "hand": "Drive",
+      "img": ""
+    },
+    {
+      "name": "Facu C.",
+      "hand": "Drive",
+      "img": ""
+    },
+    {
+      "name": "Patricio",
+      "hand": "Reves",
+      "img": ""
+    },
+    {
+      "name": "Nico Rocha",
+      "hand": "Drive",
+      "img": ""
+    },
+    {
+      "name": "Martin A.",
+      "hand": "Reves",
+      "img": ""
+    },
+    {
+      "name": "Martin M.",
+      "hand": "Drive",
+      "img": ""
+    }
+  ],
+  "exhibitionConfirmed": {
+    "0": [
+      "Jose L.",
+      "Vicky D' P.",
+      "Lukia F.",
+      "Maxi",
+      "Pauli",
+      "Jessi N.",
+      "Elias",
+      "Nico D,.",
+      "Facu C.",
+      "Patricio",
+      "Nico Rocha",
+      "Martin A."
+    ],
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": []
+  },
+  "exhibitionSchedule": {
+    "0": {
+      "type": "exhibition",
+      "enabled": true,
+      "time": "21:30",
+      "venue": "@puntosport",
+      "courts": 3,
+      "courtNumbers": [
+        3,
+        4,
+        5
+      ],
+      "groupCount": 1,
+      "locked": true,
+      "pairs": [
+        [
+          "Maxi",
+          "Pauli"
+        ],
+        [
+          "Nico Rocha",
+          "Patricio"
+        ],
+        [
+          "Vicky D' P.",
+          "Lukia F."
+        ],
+        [
+          "Martin A.",
+          "Facu C."
+        ],
+        [
+          "Jessi N.",
+          "Nico D,."
+        ],
+        [
+          "Jose L.",
+          "Elias"
+        ]
+      ],
+      "matches": [
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 4",
+          "teamA": "Jose L. / Elias",
+          "teamB": "Vicky D' P. / Lukia F.",
+          "round": 1,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 5",
+          "teamA": "Maxi / Pauli",
+          "teamB": "Jessi N. / Nico D,.",
+          "round": 1,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 3",
+          "teamA": "Martin A. / Facu C.",
+          "teamB": "Nico Rocha / Patricio",
+          "round": 1,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 3",
+          "teamA": "Maxi / Pauli",
+          "teamB": "Vicky D' P. / Lukia F.",
+          "round": 2,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 5",
+          "teamA": "Jose L. / Elias",
+          "teamB": "Martin A. / Facu C.",
+          "round": 2,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 4",
+          "teamA": "Jessi N. / Nico D,.",
+          "teamB": "Nico Rocha / Patricio",
+          "round": 2,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 5",
+          "teamA": "Maxi / Pauli",
+          "teamB": "Nico Rocha / Patricio",
+          "round": 3,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 4",
+          "teamA": "Vicky D' P. / Lukia F.",
+          "teamB": "Martin A. / Facu C.",
+          "round": 3,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 3",
+          "teamA": "Jessi N. / Nico D,.",
+          "teamB": "Jose L. / Elias",
+          "round": 3,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 4",
+          "teamA": "Maxi / Pauli",
+          "teamB": "Martin A. / Facu C.",
+          "round": 4,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 5",
+          "teamA": "Nico Rocha / Patricio",
+          "teamB": "Jose L. / Elias",
+          "round": 4,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 3",
+          "teamA": "Vicky D' P. / Lukia F.",
+          "teamB": "Jessi N. / Nico D,.",
+          "round": 4,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 5",
+          "teamA": "Nico Rocha / Patricio",
+          "teamB": "Vicky D' P. / Lukia F.",
+          "round": 5,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 4",
+          "teamA": "Maxi / Pauli",
+          "teamB": "Jose L. / Elias",
+          "round": 5,
+          "result": "Pendiente"
+        },
+        {
+          "group": "Grupo Exhibicion A",
+          "time": "21:30",
+          "court": "@puntosport - Cancha 3",
+          "teamA": "Martin A. / Facu C.",
+          "teamB": "Jessi N. / Nico D,.",
+          "round": 5,
+          "result": "Pendiente"
+        }
+      ],
+      "bracket": {
+        "quarter": [],
+        "semi": [],
+        "third": [],
+        "final": []
+      }
+    },
+    "1": {
+      "type": "none",
+      "enabled": false,
+      "time": "",
+      "venue": "@puntosport",
+      "courts": 1,
+      "courtNumbers": [
+        1
+      ],
+      "groupCount": 1,
+      "locked": false,
+      "pairs": [],
+      "matches": [],
+      "bracket": {
+        "quarter": [],
+        "semi": [],
+        "third": [],
+        "final": []
+      }
+    },
+    "2": {
+      "type": "exhibition",
+      "enabled": true,
+      "time": "20:00",
+      "venue": "@puntosport",
+      "courts": 1,
+      "courtNumbers": [
+        1
+      ],
+      "groupCount": 1,
+      "locked": false,
+      "pairs": [],
+      "matches": [],
+      "bracket": {
+        "quarter": [],
+        "semi": [],
+        "third": [],
+        "final": []
+      }
+    },
+    "3": {
+      "type": "none",
+      "enabled": false,
+      "time": "",
+      "venue": "",
+      "courts": 1,
+      "courtNumbers": [
+        1
+      ],
+      "groupCount": 1,
+      "locked": false,
+      "pairs": [],
+      "matches": [],
+      "bracket": {
+        "quarter": [],
+        "semi": [],
+        "third": [],
+        "final": []
+      }
+    },
+    "4": {
+      "type": "none",
+      "enabled": false,
+      "time": "",
+      "venue": "",
+      "courts": 1,
+      "courtNumbers": [
+        1
+      ],
+      "groupCount": 1,
+      "locked": false,
+      "pairs": [],
+      "matches": [],
+      "bracket": {
+        "quarter": [],
+        "semi": [],
+        "third": [],
+        "final": []
+      }
+    }
+  }
+}

@@ -1,0 +1,353 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #101214;
+  background: #0b2f18;
+  --cyan: #08a8c8;
+  --red: #de1d24;
+  --yellow: #f2c230;
+  --blue: #2449a8;
+  --green: #87bd34;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+.album-page {
+  width: min(100%, 430px);
+  min-height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 24px clamp(14px, 4vw, 54px) 44px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.16), transparent 28%),
+    linear-gradient(165deg, rgba(222, 29, 36, 0.96) 0 18%, transparent 18%),
+    linear-gradient(12deg, transparent 0 78%, rgba(135, 189, 52, 0.98) 78%),
+    url("https://images.unsplash.com/photo-1550881111-7cfde14b8073?auto=format&fit=crop&w=1800&q=80") center / cover;
+}
+
+.album-top {
+  width: min(1180px, 100%);
+  margin: 0 auto 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #fff;
+  font-weight: 950;
+}
+
+.album-top a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.album-scene {
+  width: min(1180px, 100%);
+  min-height: 720px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.album-cover {
+  width: min(330px, 42vw);
+  min-height: 440px;
+  position: absolute;
+  left: 0;
+  top: 18px;
+  z-index: 3;
+  transform: rotate(-16deg);
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  padding: 26px;
+  border: 5px solid #101214;
+  border-radius: 8px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 25% 20%, #fff 0 9%, transparent 9% 100%),
+    radial-gradient(circle at 80% 12%, var(--yellow) 0 13%, transparent 13%),
+    radial-gradient(circle at 70% 78%, var(--red) 0 20%, transparent 20%),
+    linear-gradient(135deg, var(--blue), var(--cyan) 42%, var(--green));
+  box-shadow: 0 34px 60px rgba(0, 0, 0, 0.38);
+}
+
+.album-cover img {
+  width: 132px;
+  height: 92px;
+  border-radius: 8px;
+  background: #fff;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.album-cover span,
+.album-cover strong {
+  text-transform: uppercase;
+  font-weight: 950;
+}
+
+.album-cover h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 0.9;
+}
+
+.album-open {
+  position: absolute;
+  right: 0;
+  top: 150px;
+  width: min(860px, 82vw);
+  min-height: 470px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transform: rotate(6deg);
+  border: 6px solid #172033;
+  border-radius: 8px;
+  background: #eaf4f8;
+  box-shadow: 0 36px 70px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+
+.page {
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(8, 168, 200, 0.16), transparent 40%),
+    #eaf4f8;
+}
+
+.right-page {
+  border-left: 4px solid #172033;
+}
+
+.page-head {
+  min-height: 78px;
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--blue);
+}
+
+.page-head.red {
+  background: var(--red);
+}
+
+.page-head span {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 8px;
+  background: #fff;
+  color: #172033;
+  font-weight: 950;
+}
+
+.page-head h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2.3rem);
+}
+
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.sticker-grid.compact {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.slot {
+  min-height: 92px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 5px;
+  padding: 10px;
+  border: 3px solid #2449a8;
+  border-radius: 12px;
+  background: #fff;
+  color: #2449a8;
+  text-align: center;
+  box-shadow: inset 0 0 0 5px #edf3ff;
+}
+
+.slot.filled {
+  color: #101214;
+  background:
+    linear-gradient(135deg, rgba(242, 194, 48, 0.86), rgba(8, 168, 200, 0.82)),
+    #fff;
+  box-shadow: 0 8px 18px rgba(16, 18, 20, 0.18);
+}
+
+.slot b {
+  font-size: 0.74rem;
+}
+
+.slot span {
+  font-weight: 900;
+}
+
+.location-card {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, #101214, #04758e);
+}
+
+.location-card strong {
+  font-size: 1.3rem;
+}
+
+.pack {
+  position: absolute;
+  z-index: 4;
+  width: 170px;
+  min-height: 220px;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+  padding: 18px;
+  border: 4px solid #101214;
+  border-radius: 8px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--red), var(--yellow), var(--cyan));
+  box-shadow: 0 26px 46px rgba(0, 0, 0, 0.34);
+}
+
+.pack span,
+.pack strong {
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.pack-one {
+  right: 90px;
+  bottom: 18px;
+  transform: rotate(-13deg);
+}
+
+.pack-two {
+  right: 0;
+  bottom: 0;
+  transform: rotate(13deg);
+}
+
+@media (max-width: 860px) {
+  .album-page {
+    overflow: visible;
+  }
+
+  .album-scene {
+    display: grid;
+    gap: 18px;
+  }
+
+  .album-cover,
+  .album-open,
+  .pack {
+    position: static;
+    width: 100%;
+    transform: none;
+  }
+
+  .album-open {
+    grid-template-columns: 1fr;
+  }
+
+  .right-page {
+    border-left: 0;
+    border-top: 4px solid #172033;
+  }
+
+  .pack {
+    min-height: 130px;
+  }
+}
+
+@media (max-width: 560px) {
+  .album-page {
+    padding: 12px 10px 28px;
+    background:
+      linear-gradient(165deg, rgba(222, 29, 36, 0.96) 0 12%, transparent 12%),
+      linear-gradient(12deg, transparent 0 86%, rgba(135, 189, 52, 0.98) 86%),
+      url("https://images.unsplash.com/photo-1550881111-7cfde14b8073?auto=format&fit=crop&w=900&q=80") center / cover;
+  }
+
+  .album-top {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+  }
+
+  .album-scene {
+    min-height: 0;
+    gap: 12px;
+  }
+
+  .album-cover {
+    min-height: 360px;
+    padding: 20px;
+  }
+
+  .album-cover h1 {
+    font-size: 2.55rem;
+  }
+
+  .album-open {
+    min-height: 0;
+    border-width: 4px;
+  }
+
+  .page {
+    padding: 12px;
+  }
+
+  .page-head {
+    grid-template-columns: 54px 1fr;
+    min-height: 64px;
+    padding: 9px;
+  }
+
+  .page-head span {
+    width: 46px;
+    height: 46px;
+  }
+
+  .page-head h2 {
+    font-size: 1.35rem;
+  }
+
+  .sticker-grid,
+  .sticker-grid.compact {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9px;
+  }
+
+  .slot {
+    min-height: 86px;
+    border-width: 2px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 4px #edf3ff;
+  }
+
+  .pack {
+    min-height: 110px;
+    border-width: 3px;
+  }
+}
