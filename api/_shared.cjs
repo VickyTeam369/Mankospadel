@@ -149,10 +149,18 @@ function readSiteData() {
 
 async function readBlobSiteData() {
   if (!process.env.BLOB_READ_WRITE_TOKEN) return null;
-  const { get } = await import('@vercel/blob');
-  const result = await get(blobPath, { access: 'private' });
-  if (!result || result.statusCode !== 200 || !result.stream) return null;
-  const text = await new Response(result.stream).text();
+  const { list } = await import('@vercel/blob');
+  const result = await list({ prefix: blobPath, limit: 1 });
+  const blob = result.blobs?.find((item) => item.pathname === blobPath);
+  if (!blob?.url) return null;
+
+  const response = await fetch(blob.url, {
+    headers: {
+      Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}`
+    }
+  });
+  if (!response.ok) return null;
+  const text = await response.text();
   return JSON.parse(text);
 }
 
