@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Mankos Padel</title>
+    <link rel="stylesheet" href="./src/admin.css?v=20260516-1" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header>
+        <div class="admin-brand">
+          <img src="./Logo.png" alt="Torneo de Mankos" />
+          <div>
+          <span>Panel privado</span>
+          <h1>Admin Mankos Padel</h1>
+          </div>
+        </div>
+        <a href="./index.html">Ver web</a>
+      </header>
+
+      <section class="login-panel" id="loginPanel">
+        <h2>Ingresar</h2>
+        <p>Usa tu clave de administrador para editar la pagina.</p>
+        <form id="loginForm">
+          <input id="password" type="password" placeholder="Clave de administrador" autocomplete="current-password" required />
+          <button type="submit">Entrar</button>
+        </form>
+      </section>
+
+      <section class="editor-panel is-hidden" id="editorPanel">
+        <div class="panel-title">
+          <div>
+            <span>Contenido editable</span>
+            <h2>Organizador</h2>
+          </div>
+          <button id="saveButton" type="button">Guardar cambios</button>
+        </div>
+
+        <form class="settings-grid is-hidden" id="settingsForm">
+          <input name="playdayVenue" />
+        </form>
+
+        <div class="panel-title compact">
+          <h2>Jugadores</h2>
+          <div class="player-actions">
+            <button id="savePlayersButton" type="button">Guardar tabla madre</button>
+            <button id="addPlayerButton" type="button">Ver tabla madre</button>
+          </div>
+        </div>
+        <div class="players-editor" id="playersEditor"></div>
+
+        <div class="panel-title compact">
+          <div>
+            <span>Organizador</span>
+            <h2>Calendario semanal</h2>
+          </div>
+        </div>
+        <div class="agenda-editor" id="agendaEditor"></div>
+      </section>
+
+      <p class="status" id="status"></p>
+    </main>
+    <script type="module" src="./src/admin.js?v=20260516-1"></script>
+  </body>
+</html>
