@@ -820,27 +820,44 @@ header a {
 }
 
 @media (max-width: 760px) {
-  header,
-  .panel-title {
-    align-items: stretch;
-    flex-direction: column;
+  body {
+    overflow-x: auto;
   }
 
-  .settings-grid,
+  .admin-shell {
+    width: 960px;
+    max-width: none;
+    padding: 18px 18px 60px;
+  }
+
+  header,
+  .panel-title {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  h1 {
+    font-size: 3.7rem;
+  }
+
+  .editor-panel {
+    padding: 18px;
+  }
+
   .player-edit-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 0.6fr 1.4fr auto;
   }
 
   .admin-calendar {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .player-picker {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .court-settings {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
   }
 
   .pair-preview,
@@ -848,14 +865,14 @@ header a {
   .group-preview,
   .court-fixture,
   .match-preview {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .knockout-editor article {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
   }
 
   .knockout-editor article b {
-    width: fit-content;
+    width: auto;
   }
 }
