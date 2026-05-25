@@ -821,35 +821,68 @@ header a {
 
 @media (max-width: 760px) {
   body {
-    overflow-x: auto;
+    overflow-x: hidden;
   }
 
   .admin-shell {
-    width: 960px;
-    max-width: none;
-    padding: 18px 18px 60px;
+    width: 100%;
+    max-width: 430px;
+    padding: 16px 10px 56px;
   }
 
-  header,
-  .panel-title {
-    align-items: center;
-    flex-direction: row;
+  header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px;
+  }
+
+  .admin-brand {
+    gap: 10px;
+  }
+
+  .admin-brand img {
+    width: 88px;
+    height: 58px;
   }
 
   h1 {
-    font-size: 3.7rem;
+    font-size: clamp(2.35rem, 11vw, 3rem);
+    line-height: 0.95;
+  }
+
+  header a {
+    padding: 10px 12px;
+    white-space: nowrap;
+  }
+
+  .panel-title {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .editor-panel {
-    padding: 18px;
+    padding: 16px;
+    overflow: hidden;
   }
 
   .player-edit-card {
-    grid-template-columns: 1fr 0.6fr 1.4fr auto;
+    grid-template-columns: minmax(0, 1fr) minmax(110px, 0.55fr);
+    align-items: end;
+  }
+
+  .player-edit-card label:nth-child(3),
+  .add-player-row {
+    grid-column: 1 / -1;
+  }
+
+  .add-player-row button {
+    width: 100%;
   }
 
   .admin-calendar {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .player-picker {
@@ -857,7 +890,11 @@ header a {
   }
 
   .court-settings {
-    grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
+    grid-template-columns: 1fr;
+  }
+
+  .court-number-picker {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .pair-preview,
@@ -865,14 +902,48 @@ header a {
   .group-preview,
   .court-fixture,
   .match-preview {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .knockout-editor article {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+    grid-template-columns: 1fr;
   }
 
   .knockout-editor article b {
-    width: auto;
+    width: fit-content;
+  }
+}
+
+@media (max-width: 430px) {
+  .admin-shell {
+    max-width: 100%;
+    padding-inline: 6px;
+  }
+
+  .admin-brand img {
+    width: 76px;
+    height: 52px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 10vw, 2.45rem);
+  }
+
+  .login-panel,
+  .editor-panel {
+    padding: 14px;
+  }
+
+  .player-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .player-actions button {
+    flex: 1 1 150px;
+  }
+
+  .player-picker {
+    grid-template-columns: 1fr;
   }
 }
