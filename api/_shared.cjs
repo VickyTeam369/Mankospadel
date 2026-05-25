@@ -4,6 +4,7 @@ const crypto = require('crypto');
 
 const root = path.join(__dirname, '..');
 const dataPath = path.join(root, 'src', 'data', 'site-data.json');
+const blobPath = 'site-data.json';
 
 function json(response, status, payload) {
   response.statusCode = status;
@@ -146,8 +147,44 @@ function readSiteData() {
   return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 }
 
-function writeSiteData(data) {
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf8');
+async function readBlobSiteData() {
+  if (!process.env.BLOB_READ_WRITE_TOKEN) return null;
+  const { get } = await import('@vercel/blob');
+  const result = await get(blobPath, { access: 'private' });
+  if (!result || result.statusCode !== 200 || !result.stream) return null;
+  const text = await new Response(result.stream).text();
+  return JSON.parse(text);
+}
+
+async function readPublishedSiteData() {
+  try {
+    const blobData = await readBlobSiteData();
+    if (blobData) return blobData;
+  } catch (error) {
+    if (error?.name !== 'BlobNotFoundError') throw error;
+  }
+
+  return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+}
+
+async function writeSiteData(data) {
+  const content = JSON.stringify(data, null, 2);
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const { put } = await import('@vercel/blob');
+    await put(blobPath, content, {
+      access: 'private',
+      allowOverwrite: true,
+      contentType: 'application/json',
+      cacheControlMaxAge: 60
+    });
+    return;
+  }
+
+  if (process.env.VERCEL) {
+    throw new Error('Falta conectar Vercel Blob y configurar BLOB_READ_WRITE_TOKEN.');
+  }
+
+  fs.writeFileSync(dataPath, content, 'utf8');
 }
 
 module.exports = {
@@ -156,6 +193,7 @@ module.exports = {
   isAuthorized,
   json,
   readJson,
+  readPublishedSiteData,
   readSiteData,
   writeSiteData
 };

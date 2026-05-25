@@ -3,7 +3,7 @@ const {
   isAuthorized,
   json,
   readJson,
-  readSiteData,
+  readPublishedSiteData,
   writeSiteData
 } = require('./_shared.cjs');
 
@@ -15,7 +15,7 @@ module.exports = async function handler(request, response) {
 
   if (request.method === 'GET') {
     try {
-      json(response, 200, readSiteData());
+      json(response, 200, await readPublishedSiteData());
     } catch {
       json(response, 500, { error: 'No se pudo leer la configuracion' });
     }
@@ -25,11 +25,11 @@ module.exports = async function handler(request, response) {
   if (request.method === 'POST') {
     try {
       const cleaned = cleanSiteData(await readJson(request));
-      writeSiteData(cleaned);
+      await writeSiteData(cleaned);
       json(response, 200, cleaned);
-    } catch {
+    } catch (error) {
       json(response, 500, {
-        error: 'No se pudo guardar en Vercel. Para guardar cambios online hace falta conectar una base de datos o Vercel Blob.'
+        error: error.message || 'No se pudo guardar la configuracion.'
       });
     }
     return;

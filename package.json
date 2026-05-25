@@ -2,9 +2,12 @@
   "name": "mankos-padel-live",
   "private": true,
   "version": "0.1.0",
+  "dependencies": {
+    "@vercel/blob": "^1.1.1"
+  },
   "scripts": {
     "dev": "node server.cjs",
     "start": "node server.cjs",
-    "check": "node --check src/app.js && node --check src/admin.js && node --check server.cjs && node --check api/_shared.cjs && node --check api/login.js && node --check api/site-data.js"
+    "check": "node --check src/app.js && node --check src/admin.js && node --check server.cjs && node --check api/_shared.cjs && node --check api/login.js && node --check api/site-data.js && node --check api/public-data.js"
   }
 }

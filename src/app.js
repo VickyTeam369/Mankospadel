@@ -167,7 +167,8 @@ const root = document.getElementById('root');
 
 async function loadSiteData() {
   try {
-    const response = await fetch('./src/data/site-data.json?ts=' + Date.now());
+    let response = await fetch('/api/public-data?ts=' + Date.now());
+    if (!response.ok) response = await fetch('./src/data/site-data.json?ts=' + Date.now());
     if (!response.ok) return;
 
     const data = await response.json();
