@@ -360,7 +360,7 @@ main {
   color: #101214;
 }
 
-.inscription-button {
+.hero-actions .inscription-button {
   width: min(420px, 100%);
   font-size: 1rem;
   border-color: rgba(255, 222, 120, 0.72);
