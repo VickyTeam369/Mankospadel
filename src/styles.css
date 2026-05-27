@@ -363,6 +363,20 @@ main {
 .inscription-button {
   width: min(420px, 100%);
   font-size: 1rem;
+  border-color: rgba(255, 222, 120, 0.72);
+  background: linear-gradient(135deg, #f8d56a 0%, #d9a92f 48%, #fff0a6 100%);
+  color: #171006;
+  box-shadow:
+    0 10px 24px rgba(217, 169, 47, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.hero-actions .inscription-button:hover {
+  border-color: rgba(255, 235, 150, 0.92);
+  background: linear-gradient(135deg, #ffe58a 0%, #e0b339 48%, #fff5b9 100%);
+  color: #101214;
+  transform: translateY(-1px);
 }
 
 .album-button {
