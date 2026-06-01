@@ -68,6 +68,7 @@ function cleanSchedule(value) {
       courtNumbers,
       groupCount: Math.max(1, Number(day.groupCount || 1)),
       locked: Boolean(day.locked),
+      dateKey: cleanString(day.dateKey),
       pairs: Array.isArray(day.pairs) ? day.pairs.map((pair) => Array.isArray(pair) ? pair.map(cleanString).filter(Boolean) : []).filter((pair) => pair.length === 2) : [],
       matches: Array.isArray(day.matches) ? day.matches.map((match) => ({
         group: cleanString(match.group || 'Grupo A'),

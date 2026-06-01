@@ -95,6 +95,7 @@ function getSchedule(index) {
     bracket: {}
   };
   const schedule = data.exhibitionSchedule[index];
+  resetStaleSchedule(index, schedule);
   schedule.courtNumbers = normalizeCourtNumbers(schedule.courtNumbers, schedule.courts);
   schedule.courts = schedule.courtNumbers.length;
   if ((!schedule.pairs || !schedule.pairs.length) && Array.isArray(schedule.matches) && schedule.matches.length) {
@@ -126,6 +127,42 @@ function normalizeCourtNumbers(value, fallbackCount = 1) {
   const source = Array.isArray(value) && value.length ? value : fallback;
   const numbers = [...new Set(source.map((item) => Number(item)).filter((item) => item >= 1 && item <= 7))].sort((a, b) => a - b);
   return numbers.length ? numbers : [1];
+}
+
+function agendaDateKey(index) {
+  const today = new Date();
+  const day = today.getDay() || 7;
+  const monday = new Date(today);
+  monday.setHours(0, 0, 0, 0);
+  monday.setDate(today.getDate() - day + 1);
+  const date = new Date(monday);
+  date.setDate(monday.getDate() + index);
+  return date.toISOString().slice(0, 10);
+}
+
+function hasDateContent(schedule, index) {
+  const bracket = schedule.bracket || {};
+  return Boolean(
+    schedule.locked ||
+    schedule.pairs?.length ||
+    schedule.matches?.length ||
+    Object.values(bracket).some((stage) => Array.isArray(stage) && stage.length) ||
+    data.exhibitionConfirmed?.[index]?.length
+  );
+}
+
+function resetStaleSchedule(index, schedule) {
+  const expectedDateKey = agendaDateKey(index);
+  if (schedule.dateKey === expectedDateKey) return;
+
+  if (hasDateContent(schedule, index)) {
+    data.exhibitionConfirmed[index] = [];
+    schedule.pairs = [];
+    schedule.matches = [];
+    schedule.bracket = {};
+    schedule.locked = false;
+  }
+  schedule.dateKey = expectedDateKey;
 }
 
 function selectedCourtNumbers() {
@@ -850,6 +887,7 @@ function saveSelectedDay() {
   if (selectedDay === null) return;
   const checked = [...agendaEditor.querySelectorAll('[name="confirmedPlayer"]:checked')].map((input) => input.value);
   const schedule = getSchedule(selectedDay);
+  schedule.dateKey = agendaDateKey(selectedDay);
   schedule.time = agendaEditor.querySelector('[name="eventTime"]')?.value || schedule.time || '';
   schedule.venue = agendaEditor.querySelector('[name="eventVenue"]')?.value.trim() || schedule.venue || '';
   if (agendaEditor.querySelector('[name="courtNumber"]')) {
@@ -1009,6 +1047,7 @@ function collectAgenda() {
       courtNumbers: normalizeCourtNumbers(current.courtNumbers, current.courts),
       groupCount: Number(current.groupCount || 1),
       locked: Boolean(current.locked),
+      dateKey: current.dateKey || agendaDateKey(index),
       pairs: current.pairs || [],
       matches: current.matches?.length ? current.matches : generatedExhibitionMatches(index),
       bracket: current.bracket || {}

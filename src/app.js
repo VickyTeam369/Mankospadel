@@ -1107,18 +1107,21 @@ function weekAgenda() {
   return labels.map((label, index) => {
     const date = new Date(monday);
     date.setDate(monday.getDate() + index);
+    const key = date.toISOString().slice(0, 10);
+    const schedule = exhibitionSchedule[index] || {};
+    const isCurrentDate = schedule.dateKey === key;
     return {
       label,
-      key: date.toISOString().slice(0, 10),
+      key,
       date: date.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit' }),
-      type: exhibitionSchedule[index]?.type || (exhibitionSchedule[index]?.enabled ? 'exhibition' : 'none'),
-      play: exhibitionSchedule[index]?.enabled ?? (index === 0 || index === 2),
-      time: exhibitionSchedule[index]?.time || '',
-      venue: exhibitionSchedule[index]?.venue || exhibitionSettings.playdayVenue,
-      confirmed: exhibitionConfirmed[index] || [],
-      pairs: exhibitionSchedule[index]?.pairs || [],
-      matches: exhibitionSchedule[index]?.matches || [],
-      bracket: exhibitionSchedule[index]?.bracket || {}
+      type: schedule.type || (schedule.enabled ? 'exhibition' : 'none'),
+      play: schedule.enabled ?? (index === 0 || index === 2),
+      time: schedule.time || '',
+      venue: schedule.venue || exhibitionSettings.playdayVenue,
+      confirmed: isCurrentDate ? exhibitionConfirmed[index] || [] : [],
+      pairs: isCurrentDate ? schedule.pairs || [] : [],
+      matches: isCurrentDate ? schedule.matches || [] : [],
+      bracket: isCurrentDate ? schedule.bracket || {} : {}
     };
   });
 }
