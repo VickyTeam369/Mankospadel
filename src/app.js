@@ -197,6 +197,7 @@ function icon(name) {
     dice: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 8h.01M16 8h.01M12 12h.01M8 16h.01M16 16h.01"/></svg>',
     crown: '<svg viewBox="0 0 24 24"><path d="m3 7 5 5 4-8 4 8 5-5-2 12H5L3 7Z"/></svg>',
     video: '<svg viewBox="0 0 24 24"><path d="M15 10l5-3v10l-5-3v-4ZM3 6h12v12H3z"/></svg>',
+    rain: '<svg viewBox="0 0 24 24"><path d="M17.5 18a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.2-1.7A4.5 4.5 0 0 0 6.5 18h11Z"/><path d="M8 20v2M12 19v2M16 20v2"/></svg>',
     whatsapp: '<svg viewBox="0 0 24 24"><path d="M3 21l1.7-5.1A8.4 8.4 0 1 1 8 19.2L3 21Z"/><path d="M9.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .6.4l.8 1.8c.1.3.1.5-.1.7l-.4.5c-.2.2-.2.4 0 .7.5.8 1.2 1.5 2.1 2 .3.2.5.2.7 0l.6-.7c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.6 0 .6-.4 1.3-.9 1.5-.6.3-1.5.3-2.8-.2-2.4-.9-4.3-2.9-5.2-5.2-.5-1.2-.5-2.2-.2-2.8Z"/></svg>'
     ,
     calendar: '<svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>'
@@ -636,7 +637,7 @@ function exhibitionAgenda() {
             <b>${day.date}</b>
             ${day.time ? `<em>${day.time}</em>` : ''}
             ${day.venue ? `<i>${day.venue}</i>` : ''}
-            <small>${day.suspended ? 'Suspendido' : day.type === 'tournament' ? 'Torneo' : day.play ? 'Ver' : 'Sin fecha'}</small>
+            <small>${day.suspended ? 'Sus.' : day.type === 'tournament' ? 'Torneo' : day.play ? 'Ver' : 'Sin fecha'}</small>
           </button>
         `).join('')}
       </div>
@@ -678,7 +679,7 @@ function agendaModal() {
         <div class="club-stats" aria-label="Resumen del grupo">
           <div><strong>${confirmedCount}</strong><small>Confirmados</small></div>
         </div>
-        ${day.suspended ? '<button class="weather-suspended-button" type="button">Suspendido por mal clima</button>' : ''}
+        ${day.suspended ? `<div class="weather-suspended-banner">${icon('rain')}<strong>Suspendido por mal clima</strong><small>La fecha queda pausada hasta nuevo aviso.</small></div>` : ''}
         <div class="modal-section-title compact-title">
           <span>Club Mankos</span>
           <strong>${day.play ? 'Integrantes confirmados' : 'Sin confirmados'}</strong>
