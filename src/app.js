@@ -631,12 +631,12 @@ function exhibitionAgenda() {
       </div>
       <div class="agenda-grid" aria-label="Calendario semanal de exhibicion">
         ${days.map((day) => `
-          <button class="agenda-day ${day.play ? 'is-playday' : ''} ${day.type === 'tournament' ? 'is-tournament' : ''}" data-agenda-day="${day.key}" type="button" aria-label="Ver confirmados para ${day.label} ${day.date}">
+          <button class="agenda-day ${day.play ? 'is-playday' : ''} ${day.type === 'tournament' ? 'is-tournament' : ''} ${day.suspended ? 'is-suspended' : ''}" data-agenda-day="${day.key}" type="button" aria-label="Ver confirmados para ${day.label} ${day.date}">
             <strong>${day.label}</strong>
             <b>${day.date}</b>
             ${day.time ? `<em>${day.time}</em>` : ''}
             ${day.venue ? `<i>${day.venue}</i>` : ''}
-            <small>${day.type === 'tournament' ? 'Torneo' : day.play ? 'Ver' : 'Sin fecha'}</small>
+            <small>${day.suspended ? 'Suspendido' : day.type === 'tournament' ? 'Torneo' : day.play ? 'Ver' : 'Sin fecha'}</small>
           </button>
         `).join('')}
       </div>
@@ -653,7 +653,7 @@ function agendaModal() {
   const confirmedCount = day.confirmed.length;
   const eventName = day.type === 'tournament' ? 'Torneo Mankos' : 'Fecha privada';
   const venueAddress = venueAddressFor(day.venue);
-  const canViewPairs = day.play && day.pairs.length > 0;
+  const canViewPairs = day.play && !day.suspended && day.pairs.length > 0;
   const pairButtonLabel = day.pairs.length ? 'Ver Parejas' : 'Parejas sin cargar';
   const podium = finalPodiumFor(day);
 
@@ -678,6 +678,7 @@ function agendaModal() {
         <div class="club-stats" aria-label="Resumen del grupo">
           <div><strong>${confirmedCount}</strong><small>Confirmados</small></div>
         </div>
+        ${day.suspended ? '<button class="weather-suspended-button" type="button">Suspendido por mal clima</button>' : ''}
         <div class="modal-section-title compact-title">
           <span>Club Mankos</span>
           <strong>${day.play ? 'Integrantes confirmados' : 'Sin confirmados'}</strong>
@@ -705,7 +706,7 @@ function agendaModal() {
         <button class="view-pairs-button" data-view-pairs type="button" ${canViewPairs ? '' : 'disabled'}>
           ${pairButtonLabel}
         </button>
-        <button class="view-results-button" data-open-results type="button">
+        <button class="view-results-button" data-open-results type="button" ${day.suspended ? 'disabled' : ''}>
           Ver resultados
         </button>
       </section>
@@ -1118,6 +1119,7 @@ function weekAgenda() {
       play: schedule.enabled ?? (index === 0 || index === 2),
       time: schedule.time || '',
       venue: schedule.venue || exhibitionSettings.playdayVenue,
+      suspended: Boolean(schedule.suspended),
       confirmed: isCurrentDate ? exhibitionConfirmed[index] || [] : [],
       pairs: isCurrentDate ? schedule.pairs || [] : [],
       matches: isCurrentDate ? schedule.matches || [] : [],

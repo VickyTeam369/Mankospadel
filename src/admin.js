@@ -90,6 +90,7 @@ function getSchedule(index) {
     courtNumbers: [1],
     groupCount: 1,
     locked: false,
+    suspended: false,
     pairs: [],
     matches: [],
     bracket: {}
@@ -235,6 +236,7 @@ function renderPlayers() {
 
 function eventLabel(schedule) {
   if (schedule.locked && schedule.type === 'tournament') return 'Torneo guardado';
+  if (schedule.suspended) return 'Suspendido';
   if (schedule.locked && (schedule.type === 'exhibition' || schedule.enabled)) return 'Exhibicion guardada';
   if (schedule.type === 'tournament') return 'Torneo';
   if (schedule.type === 'exhibition' || schedule.enabled) return 'Exhibicion';
@@ -248,7 +250,7 @@ function renderAgenda() {
       ${agendaDays.map((day, index) => {
         const schedule = getSchedule(index);
         return `
-          <button class="admin-day ${selectedDay === index ? 'is-selected' : ''} ${schedule.type === 'tournament' ? 'is-tournament' : ''}" data-select-day="${index}" type="button">
+          <button class="admin-day ${selectedDay === index ? 'is-selected' : ''} ${schedule.type === 'tournament' ? 'is-tournament' : ''} ${schedule.suspended ? 'is-suspended' : ''}" data-select-day="${index}" type="button">
             <strong>${agendaLabels[index]}</strong>
             <span>${eventLabel(schedule)}</span>
             ${schedule.locked ? '<small>Establecido</small>' : ''}
@@ -276,8 +278,20 @@ function renderAgenda() {
         schedule.pairs = [];
         schedule.matches = [];
         schedule.bracket = {};
+        schedule.suspended = false;
       }
       schedule.locked = false;
+      renderAgenda();
+    });
+  });
+
+  agendaEditor.querySelectorAll('[data-toggle-suspended]').forEach((button) => {
+    button.addEventListener('click', () => {
+      saveSelectedDay();
+      const schedule = getSchedule(selectedDay);
+      schedule.suspended = !schedule.suspended;
+      schedule.enabled = schedule.suspended ? true : schedule.enabled;
+      schedule.type = schedule.suspended && schedule.type === 'none' ? 'exhibition' : schedule.type;
       renderAgenda();
     });
   });
@@ -423,6 +437,7 @@ function dayEditorTemplate(playerNames) {
         <button class="${schedule.type === 'none' || !schedule.enabled ? 'active' : ''}" data-event-type="none" type="button">Sin actividad</button>
         <button class="${schedule.type === 'exhibition' ? 'active' : ''}" data-event-type="exhibition" type="button">Exhibicion</button>
         <button class="${schedule.type === 'tournament' ? 'active gold' : ''}" data-event-type="tournament" type="button">Organizar torneo</button>
+        <button class="weather ${schedule.suspended ? 'active' : ''}" data-toggle-suspended type="button">Suspendido por mal clima</button>
       </div>
       <label class="time-field">Horario <input name="eventTime" type="time" value="${escapeAttr(schedule.time || '')}" /></label>
       <label class="venue-field">Lugar de juego <input name="eventVenue" value="${escapeAttr(schedule.venue || data.settings?.playdayVenue || '')}" placeholder="@puntosport" /></label>
@@ -888,6 +903,7 @@ function saveSelectedDay() {
   const checked = [...agendaEditor.querySelectorAll('[name="confirmedPlayer"]:checked')].map((input) => input.value);
   const schedule = getSchedule(selectedDay);
   schedule.dateKey = agendaDateKey(selectedDay);
+  schedule.suspended = Boolean(schedule.suspended);
   schedule.time = agendaEditor.querySelector('[name="eventTime"]')?.value || schedule.time || '';
   schedule.venue = agendaEditor.querySelector('[name="eventVenue"]')?.value.trim() || schedule.venue || '';
   if (agendaEditor.querySelector('[name="courtNumber"]')) {
@@ -1048,6 +1064,7 @@ function collectAgenda() {
       groupCount: Number(current.groupCount || 1),
       locked: Boolean(current.locked),
       dateKey: current.dateKey || agendaDateKey(index),
+      suspended: Boolean(current.suspended),
       pairs: current.pairs || [],
       matches: current.matches?.length ? current.matches : generatedExhibitionMatches(index),
       bracket: current.bracket || {}

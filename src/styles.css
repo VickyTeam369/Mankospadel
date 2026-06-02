@@ -912,6 +912,12 @@ main {
   box-shadow: 0 12px 24px rgba(214, 164, 0, 0.2);
 }
 
+.agenda-day.is-suspended {
+  border-color: #f59f00;
+  background: linear-gradient(180deg, #fff4df, #ffffff);
+  box-shadow: 0 12px 24px rgba(245, 159, 0, 0.18);
+}
+
 .agenda-day.is-playday small {
   color: #101214;
   background: var(--accent);
@@ -922,6 +928,11 @@ main {
 .agenda-day.is-tournament small {
   color: #101214;
   background: #f3c623;
+}
+
+.agenda-day.is-suspended small {
+  color: #101214;
+  background: #f59f00;
 }
 
 .agenda-day:hover,
@@ -1591,6 +1602,16 @@ main {
   color: #667085;
   background: #e5ebf0;
   cursor: not-allowed;
+}
+
+.weather-suspended-button {
+  min-height: 48px;
+  border: 1px solid rgba(245, 159, 0, 0.55);
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f59f00, #ffd27a);
+  color: #101214;
+  font-weight: 950;
+  text-transform: uppercase;
 }
 
 .view-results-button {

@@ -265,6 +265,16 @@ header a {
   color: #101214;
 }
 
+.admin-day.is-suspended {
+  border-color: #f59f00;
+  background: linear-gradient(180deg, #fff4df, #fff);
+}
+
+.admin-day.is-suspended span {
+  background: #f59f00;
+  color: #101214;
+}
+
 .day-editor {
   display: grid;
   gap: 12px;
@@ -307,6 +317,16 @@ header a {
 
 .event-type button.gold {
   background: #f3c623;
+}
+
+.event-type button.weather {
+  background: #ffe8cc;
+  color: #7a3d00;
+}
+
+.event-type button.weather.active {
+  background: #f59f00;
+  color: #101214;
 }
 
 .time-field {
