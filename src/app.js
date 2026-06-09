@@ -459,9 +459,9 @@ function render() {
       if (event.target === backdrop) closeLiveFollowModal();
     });
   });
-  document.querySelectorAll('[data-close-intro-video]').forEach((button) => button.addEventListener('click', closeIntroVideo));
   document.querySelectorAll('[data-intro-video]').forEach((video) => {
     video.addEventListener('ended', closeIntroVideo);
+    video.addEventListener('error', closeIntroVideo);
   });
   document.querySelectorAll('[data-sets]').forEach((input) => {
     input.addEventListener('input', (event) => {
@@ -479,7 +479,6 @@ function introVideo() {
     <div class="intro-video-backdrop" role="dialog" aria-modal="true" aria-label="Video de bienvenida">
       <section class="intro-video-card">
         <video data-intro-video src="./src/assets/intro-mankos.mp4" autoplay muted playsinline preload="auto"></video>
-        <button class="intro-video-close" data-close-intro-video type="button" aria-label="Cerrar video">&times;</button>
       </section>
     </div>
   `;

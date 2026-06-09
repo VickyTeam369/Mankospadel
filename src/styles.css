@@ -51,45 +51,24 @@ input:focus-visible {
   position: fixed;
   inset: 0;
   z-index: 80;
-  display: grid;
-  place-items: center;
-  padding: 18px;
-  background: rgba(6, 10, 14, 0.88);
+  display: block;
+  background: #05070a;
 }
 
 .intro-video-card {
-  position: relative;
-  width: min(100%, 390px);
-  max-height: calc(100vh - 36px);
-  display: grid;
+  width: 100vw;
+  height: 100vh;
+  display: block;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
   background: #05070a;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
 }
 
 .intro-video-card video {
   width: 100%;
-  max-height: calc(100vh - 36px);
+  height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   background: #05070a;
-}
-
-.intro-video-close {
-  width: 36px;
-  height: 36px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 8px;
-  background: rgba(5, 7, 10, 0.72);
-  color: #fff;
-  font-size: 1.35rem;
-  line-height: 1;
-  backdrop-filter: blur(10px);
 }
 
 main {
