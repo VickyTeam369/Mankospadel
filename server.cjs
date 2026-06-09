@@ -55,7 +55,7 @@ function cleanStringList(value) {
 
 function cleanSchedule(value) {
   const schedule = {};
-  for (let index = 0; index < 5; index += 1) {
+  for (let index = 0; index < 6; index += 1) {
     const day = value?.[index] || value?.[String(index)] || {};
     const type = ['none', 'exhibition', 'tournament'].includes(day.type) ? day.type : (day.enabled ? 'exhibition' : 'none');
     const courtNumbers = cleanCourtNumbers(day.courtNumbers || day.courts);
@@ -163,7 +163,8 @@ async function handleApi(request, response, url) {
           1: cleanStringList(body.exhibitionConfirmed?.[1]),
           2: cleanStringList(body.exhibitionConfirmed?.[2]),
           3: cleanStringList(body.exhibitionConfirmed?.[3]),
-          4: cleanStringList(body.exhibitionConfirmed?.[4])
+          4: cleanStringList(body.exhibitionConfirmed?.[4]),
+          5: cleanStringList(body.exhibitionConfirmed?.[5])
         },
         exhibitionSchedule: cleanSchedule(body.exhibitionSchedule)
       };

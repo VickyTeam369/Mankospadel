@@ -101,7 +101,8 @@ let exhibitionSettings = {
 
 let exhibitionConfirmed = {
   0: ['Nico Salas', 'Tomi Aguirre', 'Facu Rivas', 'Santi Vera'],
-  2: ['Fran Molina', 'Juli Benitez', 'Nico Salas', 'Facu Rivas']
+  2: ['Fran Molina', 'Juli Benitez', 'Nico Salas', 'Facu Rivas'],
+  5: []
 };
 
 let exhibitionSchedule = {
@@ -1099,7 +1100,7 @@ function liveFollowModal() {
 }
 
 function weekAgenda() {
-  const labels = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie'];
+  const labels = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
   const today = new Date();
   const day = today.getDay() || 7;
   const monday = new Date(today);

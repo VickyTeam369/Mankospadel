@@ -17,8 +17,8 @@ let resultModalMatchIndex = null;
 let resultModalBracketStage = '';
 let resultModalBracketIndex = null;
 
-const agendaDays = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
-const agendaLabels = ['LUN', 'MAR', 'MIE', 'JUE', 'VIE'];
+const agendaDays = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+const agendaLabels = ['LUN', 'MAR', 'MIE', 'JUE', 'VIE', 'SAB'];
 
 function setStatus(message, isError = false) {
   statusNode.textContent = message;

@@ -89,7 +89,8 @@
     "1": [],
     "2": [],
     "3": [],
-    "4": []
+    "4": [],
+    "5": []
   },
   "exhibitionSchedule": {
     "0": {
@@ -346,6 +347,27 @@
       ],
       "groupCount": 1,
       "locked": false,
+      "pairs": [],
+      "matches": [],
+      "bracket": {
+        "quarter": [],
+        "semi": [],
+        "third": [],
+        "final": []
+      }
+    },
+    "5": {
+      "type": "tournament",
+      "enabled": true,
+      "time": "15:00",
+      "venue": "Punto Sport",
+      "courts": 1,
+      "courtNumbers": [
+        1
+      ],
+      "groupCount": 1,
+      "locked": false,
+      "dateKey": "2026-06-13",
       "pairs": [],
       "matches": [],
       "bracket": {
