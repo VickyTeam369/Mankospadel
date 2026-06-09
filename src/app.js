@@ -141,6 +141,7 @@ const state = {
   selectedPairKey: '',
   registrationModalOpen: false,
   liveFollowModalOpen: false,
+  introVideoOpen: true,
   pairs: [
     ['Nico Salas', 'Tomi Aguirre'],
     ['Facu Rivas', 'Santi Vera'],
@@ -334,6 +335,11 @@ function closeLiveFollowModal() {
   render();
 }
 
+function closeIntroVideo() {
+  state.introVideoOpen = false;
+  render();
+}
+
 function isTournamentLive() {
   return new Date().toISOString().slice(0, 10) === liveConfig.tournamentDate;
 }
@@ -383,6 +389,7 @@ function render() {
       ${registrationModal()}
       ${liveFollowModal()}
       ${galleryModal()}
+      ${introVideo()}
     </main>
   `;
 
@@ -452,6 +459,10 @@ function render() {
       if (event.target === backdrop) closeLiveFollowModal();
     });
   });
+  document.querySelectorAll('[data-close-intro-video]').forEach((button) => button.addEventListener('click', closeIntroVideo));
+  document.querySelectorAll('[data-intro-video]').forEach((video) => {
+    video.addEventListener('ended', closeIntroVideo);
+  });
   document.querySelectorAll('[data-sets]').forEach((input) => {
     input.addEventListener('input', (event) => {
       state.sets = event.target.value;
@@ -460,6 +471,18 @@ function render() {
       });
     });
   });
+}
+
+function introVideo() {
+  if (!state.introVideoOpen) return '';
+  return `
+    <div class="intro-video-backdrop" role="dialog" aria-modal="true" aria-label="Video de bienvenida">
+      <section class="intro-video-card">
+        <video data-intro-video src="./src/assets/intro-mankos.mp4" autoplay muted playsinline preload="auto"></video>
+        <button class="intro-video-close" data-close-intro-video type="button" aria-label="Cerrar video">&times;</button>
+      </section>
+    </div>
+  `;
 }
 
 function navButton(id, label, iconName) {
