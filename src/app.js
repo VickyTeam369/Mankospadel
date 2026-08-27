@@ -171,7 +171,7 @@ const foodCards = [
     id: 'almuerzo',
     title: 'Tarjeta de almuerzo',
     priceNow: '$6.000',
-    priceAtEvent: '$7.200',
+    priceAtEvent: 'A confirmar',
     hours: '12:00 a 15:30 hs',
     summary: 'Canje por un almuerzo individual.',
     detail: 'Esta tarjeta individual sirve para canjear por un almuerzo en cualquiera de los dias disponibles. Se puede usar el dia que quieran solicitar, eligiendo una opcion del menu del dia especificado en el menu principal.',
@@ -182,7 +182,7 @@ const foodCards = [
     id: 'sandwich',
     title: 'Tarjeta sandwich',
     priceNow: '$3.500',
-    priceAtEvent: '$4.200',
+    priceAtEvent: 'A confirmar',
     hours: 'Segun disponibilidad',
     summary: 'Canje por sandwich individual.',
     detail: 'Tarjeta individual para canjear por una opcion de sandwich disponible en el evento.',
@@ -394,12 +394,6 @@ function closeFoodCard() {
   render();
 }
 
-function handleFoodCardClick(event) {
-  const card = event.target.closest('[data-food-card]');
-  if (!card) return;
-  openFoodCard(card.dataset.foodCard);
-}
-
 function closeIntroVideo() {
   state.introVideoOpen = false;
   render();
@@ -529,7 +523,7 @@ function render() {
     video.addEventListener('ended', closeIntroVideo);
     video.addEventListener('error', closeIntroVideo);
   });
-  document.querySelectorAll('[data-food-card]').forEach((button) => button.addEventListener('click', handleFoodCardClick));
+  document.querySelectorAll('[data-food-card]').forEach((button) => button.addEventListener('click', () => openFoodCard(button.dataset.foodCard)));
   document.querySelectorAll('[data-close-food-card]').forEach((button) => button.addEventListener('click', closeFoodCard));
   document.querySelectorAll('[data-food-card-backdrop]').forEach((backdrop) => {
     backdrop.addEventListener('click', (event) => {
@@ -1130,7 +1124,6 @@ function foodCardsPanel() {
             ${icon('food')}
             <span>${card.title}</span>
             <strong>${card.priceNow}</strong>
-            <small>Ver detalle</small>
           </button>
         `).join('')}
       </div>
