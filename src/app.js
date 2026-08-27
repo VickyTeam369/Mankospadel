@@ -733,9 +733,6 @@ function agendaModal() {
         <button class="view-results-button" data-open-results type="button" ${day.suspended ? 'disabled' : ''}>
           Ver resultados
         </button>
-        <button class="back-main-button" data-close-agenda type="button">
-          Volver al menu principal
-        </button>
       </section>
       ${state.pairsModalOpen && canViewPairs ? pairsModal(day) : ''}
       ${state.resultsModalOpen ? resultsModal(day) : ''}
