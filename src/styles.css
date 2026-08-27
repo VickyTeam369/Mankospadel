@@ -1682,6 +1682,21 @@ main {
   cursor: not-allowed;
 }
 
+.back-main-button {
+  min-height: 44px;
+  border: 1px solid #d9e1e8;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #101214;
+  font-weight: 950;
+}
+
+.back-main-button:hover {
+  border-color: #101214;
+  background: #101214;
+  color: #fff;
+}
+
 .date-podium {
   display: grid;
   gap: 8px;
