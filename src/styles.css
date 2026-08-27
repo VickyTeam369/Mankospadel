@@ -676,6 +676,7 @@ main {
   display: none;
 }
 
+.food-cards-panel,
 .champions-card,
 .podium-card,
 .silver-mention,
@@ -689,6 +690,69 @@ main {
   background: #fff;
   box-shadow: var(--shadow);
   text-align: center;
+}
+
+.food-cards-panel {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  text-align: left;
+}
+
+.food-cards-head {
+  display: grid;
+  gap: 3px;
+}
+
+.food-cards-head span {
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.food-cards-head h3 {
+  margin: 0;
+  color: #101214;
+  font-size: 1.3rem;
+}
+
+.food-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.food-card-button {
+  min-height: 86px;
+  display: grid;
+  gap: 5px;
+  justify-items: start;
+  border: 1px solid #d9e1e8;
+  border-radius: 8px;
+  padding: 11px;
+  background: #f8fafc;
+  color: #101214;
+  text-align: left;
+}
+
+.food-card-button .icon {
+  color: var(--accent-dark);
+}
+
+.food-card-button span {
+  font-size: 0.82rem;
+  font-weight: 950;
+}
+
+.food-card-button strong {
+  color: #8a6a00;
+  font-size: 1.05rem;
+}
+
+.food-card-button:hover {
+  border-color: #f3c623;
+  background: #fff8d8;
 }
 
 .champions-card {
@@ -995,6 +1059,17 @@ main {
   backdrop-filter: blur(10px);
 }
 
+.food-card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(7, 10, 13, 0.72);
+  backdrop-filter: blur(10px);
+}
+
 .live-follow-backdrop {
   position: fixed;
   inset: 0;
@@ -1076,6 +1151,22 @@ main {
     linear-gradient(180deg, #ffffff, #f3f7fa);
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
   color: #101214;
+}
+
+.food-card-modal {
+  width: min(100%, 382px);
+  max-height: calc(100vh - 36px);
+  position: relative;
+  display: grid;
+  gap: 12px;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.54);
+  border-radius: 8px;
+  padding: 20px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+  color: #101214;
+  text-align: left;
 }
 
 .live-follow-modal {
@@ -1183,6 +1274,17 @@ main {
   text-transform: uppercase;
 }
 
+.food-card-modal > span {
+  width: fit-content;
+  border-radius: 6px;
+  padding: 5px 8px;
+  color: #101214;
+  background: #f3c623;
+  font-size: 0.74rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
 .live-follow-modal > span {
   width: fit-content;
   border-radius: 6px;
@@ -1249,6 +1351,14 @@ main {
   margin: 0;
   max-width: 270px;
   font-size: 1.9rem;
+  line-height: 1;
+}
+
+.food-card-modal h3 {
+  margin: 0;
+  padding-right: 36px;
+  color: #101214;
+  font-size: 1.65rem;
   line-height: 1;
 }
 
@@ -1348,6 +1458,13 @@ main {
   margin: 0;
   color: var(--muted);
   font-weight: 800;
+}
+
+.food-card-modal p {
+  margin: 0;
+  color: #475467;
+  font-weight: 800;
+  line-height: 1.45;
 }
 
 .group-tabs {
@@ -1511,6 +1628,68 @@ main {
 .registration-details {
   display: grid;
   gap: 10px;
+}
+
+.food-price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.food-price-grid div,
+.food-info-row,
+.food-detail-list {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8fafc;
+}
+
+.food-price-grid div {
+  display: grid;
+  gap: 4px;
+}
+
+.food-price-grid small,
+.food-info-row small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.food-price-grid strong {
+  color: #8a6a00;
+  font-size: 1.3rem;
+}
+
+.food-info-row {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 2px 10px;
+  align-items: center;
+}
+
+.food-info-row .icon {
+  grid-row: span 2;
+  color: var(--accent-dark);
+}
+
+.food-detail-list {
+  display: grid;
+  gap: 7px;
+}
+
+.food-detail-list strong {
+  color: #101214;
+}
+
+.food-detail-list span {
+  border-radius: 6px;
+  padding: 7px 9px;
+  background: #fff;
+  color: #344054;
+  font-weight: 850;
 }
 
 .registration-details div {
