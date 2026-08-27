@@ -139,7 +139,6 @@ const state = {
   galleryModalOpen: false,
   selectedGalleryPhoto: 0,
   selectedPairKey: '',
-  selectedFoodCard: '',
   registrationModalOpen: false,
   liveFollowModalOpen: false,
   introVideoOpen: true,
@@ -165,53 +164,6 @@ const nextTournament = {
   whatsappNumber: '5493516698856',
   whatsappText: 'Info para el torneo'
 };
-
-const foodCards = [
-  {
-    id: 'almuerzo',
-    title: 'Tarjeta de almuerzo',
-    priceNow: '$6.000',
-    priceAtEvent: 'A confirmar',
-    hours: '12:00 a 15:30 hs',
-    summary: 'Canje por un almuerzo individual.',
-    detail: 'Esta tarjeta individual sirve para canjear por un almuerzo en cualquiera de los dias disponibles. Se puede usar el dia que quieran solicitar, eligiendo una opcion del menu del dia especificado en el menu principal.',
-    includes: ['Menu del dia elegido', 'Cubiertos', 'Pan', 'Servilletas'],
-    menu: ['Opciones segun menu principal del dia']
-  },
-  {
-    id: 'sandwich',
-    title: 'Tarjeta sandwich',
-    priceNow: '$3.500',
-    priceAtEvent: 'A confirmar',
-    hours: 'Segun disponibilidad',
-    summary: 'Canje por sandwich individual.',
-    detail: 'Tarjeta individual para canjear por una opcion de sandwich disponible en el evento.',
-    includes: ['Sandwich individual'],
-    menu: ['Opciones a confirmar']
-  },
-  {
-    id: 'empanadas',
-    title: 'Empanadas',
-    priceNow: '$1.500',
-    priceAtEvent: 'A confirmar',
-    hours: 'Segun disponibilidad',
-    summary: 'Canje por empanadas.',
-    detail: 'Tarjeta para canjear por empanadas durante el evento, segun disponibilidad del dia.',
-    includes: ['Empanadas'],
-    menu: ['Sabores a confirmar']
-  },
-  {
-    id: 'desayuno',
-    title: 'Tarjeta desayuno',
-    priceNow: 'A confirmar',
-    priceAtEvent: 'A confirmar',
-    hours: 'A confirmar',
-    summary: 'Canje por desayuno individual.',
-    detail: 'Tarjeta individual para canjear por desayuno durante el evento.',
-    includes: ['Detalle a confirmar'],
-    menu: ['Opciones a confirmar']
-  }
-];
 
 const root = document.getElementById('root');
 
@@ -248,7 +200,6 @@ function icon(name) {
     crown: '<svg viewBox="0 0 24 24"><path d="m3 7 5 5 4-8 4 8 5-5-2 12H5L3 7Z"/></svg>',
     video: '<svg viewBox="0 0 24 24"><path d="M15 10l5-3v10l-5-3v-4ZM3 6h12v12H3z"/></svg>',
     rain: '<svg viewBox="0 0 24 24"><path d="M17.5 18a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.2-1.7A4.5 4.5 0 0 0 6.5 18h11Z"/><path d="M8 20v2M12 19v2M16 20v2"/></svg>',
-    food: '<svg viewBox="0 0 24 24"><path d="M4 3v8M8 3v8M6 3v18M14 3v18M14 3c4 2 6 5 6 9h-6"/></svg>',
     whatsapp: '<svg viewBox="0 0 24 24"><path d="M3 21l1.7-5.1A8.4 8.4 0 1 1 8 19.2L3 21Z"/><path d="M9.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .6.4l.8 1.8c.1.3.1.5-.1.7l-.4.5c-.2.2-.2.4 0 .7.5.8 1.2 1.5 2.1 2 .3.2.5.2.7 0l.6-.7c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.6 0 .6-.4 1.3-.9 1.5-.6.3-1.5.3-2.8-.2-2.4-.9-4.3-2.9-5.2-5.2-.5-1.2-.5-2.2-.2-2.8Z"/></svg>'
     ,
     calendar: '<svg viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>'
@@ -384,16 +335,6 @@ function closeLiveFollowModal() {
   render();
 }
 
-function openFoodCard(cardId) {
-  state.selectedFoodCard = cardId;
-  render();
-}
-
-function closeFoodCard() {
-  state.selectedFoodCard = '';
-  render();
-}
-
 function closeIntroVideo() {
   state.introVideoOpen = false;
   render();
@@ -446,7 +387,6 @@ function render() {
       <section class="content">${screen()}</section>
       ${agendaModal()}
       ${registrationModal()}
-      ${foodCardModal()}
       ${liveFollowModal()}
       ${galleryModal()}
       ${introVideo()}
@@ -522,13 +462,6 @@ function render() {
   document.querySelectorAll('[data-intro-video]').forEach((video) => {
     video.addEventListener('ended', closeIntroVideo);
     video.addEventListener('error', closeIntroVideo);
-  });
-  document.querySelectorAll('[data-food-card]').forEach((button) => button.addEventListener('click', () => openFoodCard(button.dataset.foodCard)));
-  document.querySelectorAll('[data-close-food-card]').forEach((button) => button.addEventListener('click', closeFoodCard));
-  document.querySelectorAll('[data-food-card-backdrop]').forEach((backdrop) => {
-    backdrop.addEventListener('click', (event) => {
-      if (event.target === backdrop) closeFoodCard();
-    });
   });
   document.querySelectorAll('[data-sets]').forEach((input) => {
     input.addEventListener('input', (event) => {
@@ -659,7 +592,6 @@ function tournamentView() {
           <img class="champions-official" src="./src/assets/campeones-edicion-8.png" alt="F. Maubecin y J. Uanini, campeones vigentes de Mankos Padel">
         </article>
         ${exhibitionAgenda()}
-        ${foodCardsPanel()}
       </section>
       <div class="layout-two">
         <div class="block">
@@ -1109,60 +1041,6 @@ function pairMatchesFor(day, selectedPair) {
 
 function canViewPairsFor(day) {
   return Boolean(day?.play && day.pairs?.length);
-}
-
-function foodCardsPanel() {
-  return `
-    <article class="food-cards-panel">
-      <div class="food-cards-head">
-        <span>Menu principal</span>
-        <h3>Tarjetas disponibles</h3>
-      </div>
-      <div class="food-card-grid">
-        ${foodCards.map((card) => `
-          <button class="food-card-button" data-food-card="${card.id}" type="button">
-            ${icon('food')}
-            <span>${card.title}</span>
-            <strong>${card.priceNow}</strong>
-          </button>
-        `).join('')}
-      </div>
-    </article>
-  `;
-}
-
-function foodCardModal() {
-  if (!state.selectedFoodCard) return '';
-  const card = foodCards.find((item) => item.id === state.selectedFoodCard);
-  if (!card) return '';
-
-  return `
-    <div class="food-card-backdrop" data-food-card-backdrop>
-      <section class="food-card-modal" role="dialog" aria-modal="true" aria-label="Detalle de ${card.title}">
-        <button class="modal-close" data-close-food-card type="button" aria-label="Cerrar">&times;</button>
-        <span>Detalle de tarjeta</span>
-        <h3>${card.title}</h3>
-        <p>${card.detail}</p>
-        <div class="food-price-grid">
-          <div><small>Comprando ahora</small><strong>${card.priceNow}</strong></div>
-          <div><small>En el momento</small><strong>${card.priceAtEvent}</strong></div>
-        </div>
-        <div class="food-info-row">
-          ${icon('calendar')}
-          <strong>Horario de canje</strong>
-          <small>${card.hours}</small>
-        </div>
-        <div class="food-detail-list">
-          <strong>Incluye</strong>
-          ${card.includes.map((item) => `<span>${item}</span>`).join('')}
-        </div>
-        <div class="food-detail-list">
-          <strong>Menu / opciones</strong>
-          ${card.menu.map((item) => `<span>${item}</span>`).join('')}
-        </div>
-      </section>
-    </div>
-  `;
 }
 
 function canViewResultsFor(day) {
